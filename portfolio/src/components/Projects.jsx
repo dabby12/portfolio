@@ -1,4 +1,3 @@
-// src/components/Projects.jsx
 import React from 'react';
 
 const Projects = () => {
@@ -9,11 +8,37 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Replace these with your project cards */}
           <div className="bg-white p-6 rounded shadow">
-            <h3 className="text-xl font-bold mb-2">Project Title 1</h3>
-            <p className="mb-4">A brief description of the project.</p>
-            <a href="#" className="text-blue-500 hover:underline">View Project</a>
+            <h3 className="text-xl font-bold mb-2">
+              Designing an app with basic introductions about textile waste
+            </h3>
+            <p className="mb-4">Used Vite, React and Tailwind CSS</p>
+            
+            
+            <a
+              href="https://textile-waste.vercel.app/" // Replace this with the actual project link
+              target="_blank" // Opens the link in a new tab
+              rel="noopener noreferrer" // Ensures security when opening external links
+              className="text-blue-500 hover:underline"
+            >
+              View Project
+            </a>
           </div>
           {/* Add more projects as needed */}
+          <div className="bg-white p-6 rounded shadow">
+            <h3 className="text-xl font-bold mb-2">
+              Project Imajer
+            </h3>
+            <p className="mb-4">Used Next.js and Tailwind CSS</p>
+          
+            <a
+              href="https://imager-orcin.vercel.app//" // Replace this with another project link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              View Project
+            </a>
+          </div>
         </div>
       </div>
     </section>
