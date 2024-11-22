@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import LogoGrid from './components/LogoGrid';
-import { Analytics } from "@vercel/analytics/react"
+import Education from './components/Education'
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
       <About />
       <Projects />
       <LogoGrid />
+      <Education />
     </div>
   );
 }
