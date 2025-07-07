@@ -1,86 +1,38 @@
+# Portfolio
 
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A responsive and interactive portfolio website built with **React**, **Vite**, and **Tailwind CSS**, showcasing technologies and skills with icons provided by [Icons8](https://icons8.com).
+## Getting Started
 
-## 🛠️ Technologies Used
+First, run the development server:
 
-- **React**: For building the user interface.
-- **Vite**: A fast build tool for modern web projects.
-- **Tailwind CSS**: For styling the website with utility-first classes.
-- **Icons8**: For high-quality, customizable SVG logos representing technologies.
-
-## ✨ Features
-
-- **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices.
-- **Interactive Elements**: Hover effects and animations enhance user experience.
-- **Technologies Section**: Displays technology logos with names, dynamically arranged in a grid.
-- **Fast Loading**: Built with Vite, ensuring optimized performance.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed on your system:
-
-- **Node.js** (v16 or later)
-- **npm** or **yarn**
-
-### Installation
-
-1. Clone the repository:
-
-   \`\`\`bash
-   git clone https://github.com/yourusername/portfolio-website.git
-   cd portfolio-website
-   \`\`\`
-
-2. Install dependencies:
-
-   \`\`\`bash
-   npm install
-   # or
-   yarn install
-   \`\`\`
-
-3. Start the development server:
-
-   \`\`\`bash
-   npm run dev
-   # or
-   yarn dev
-   \`\`\`
-
-4. Open your browser and visit \`http://localhost:5173\`.
-
-### Build for Production
-
-To create an optimized production build:
-
-\`\`\`bash
-npm run build
+```bash
+npm run dev
 # or
-yarn build
-\`\`\`
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-The built files will be located in the \`dist\` directory.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🖼️ Credits
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- Icons from [Icons8](https://icons8.com).
-- Powered by [React](https://reactjs.org), [Vite](https://vitejs.dev), and [Tailwind CSS](https://tailwindcss.com).
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🤝 Contributing
+## Learn More
 
-Contributions are welcome! Please follow these steps:
+To learn more about Next.js, take a look at the following resources:
 
-1. Fork the repository.
-2. Create a new branch: \`git checkout -b feature-name\`.
-3. Commit your changes: \`git commit -m "Add feature-name"\`.
-4. Push the branch: \`git push origin feature-name\`.
-5. Submit a pull request.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 📃 License
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-This project is licensed under the **MIT License**. Feel free to use, modify, and distribute it.
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
