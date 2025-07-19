@@ -7,8 +7,10 @@ import {
   FaUser,
   FaBars,
   FaTimes,
+  FaEnvelope,
+  FaGraduationCap,
 } from "react-icons/fa";
-import { Satisfy, Handlee } from "next/font/google";
+import { Satisfy, Handlee, Montserrat_Alternates, Nothing_You_Could_Do, Grandstander } from "next/font/google";
 
 const satisfy = Satisfy({
   subsets: ["latin"],
@@ -24,16 +26,42 @@ const handlee = Handlee({
   display: "swap",
 });
 
+/* const montserratAlternates = Montserrat_Alternates({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-montserrat-alternates",
+  display: "swap",
+});
+
+const nothingYouCouldDo = Nothing_You_Could_Do({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-nothing-you-could-do",
+  display: "swap",
+});
+
+const grandstander = Grandstander({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-grandstander",
+  display: "swap",
+}); */
+
 type SidebarItem = {
   label: string;
   icon: React.ReactNode;
   href: string;
+  font: string
 };
 
+// custom fonnts not used yet, but can be added later
+// const customFonts = [montserratAlternates, nothingYouCouldDo, grandstander];
 const sidebarItems: SidebarItem[] = [
-  { label: "Home", icon: <FaHome />, href: "/" },
-  { label: "Projects", icon: <FaProjectDiagram />, href: "/projects" },
-  { label: "About Me", icon: <FaUser />, href: "/about" },
+  { label: "Home", icon: <FaHome />, href: "/", font: "var(--font-satisfy)" },
+  { label: "Projects", icon: <FaProjectDiagram />, href: "/projects", font: "" },
+  { label: "About Me", icon: <FaUser />, href: "/about", font: "" },
+  {  label: "Contact", icon: <FaEnvelope />, href: "/contact", font: "" },
+  { label: "Education", icon: <FaGraduationCap />, href: "/education", font: "" },
 ];
 
 interface SidebarProps {
@@ -160,13 +188,6 @@ export default function Sidebar({ colors }: SidebarProps) {
               </a>
             ))}
           </nav>
-
-          <footer
-            className="mt-auto text-xs text-center px-4"
-            style={{ color: colors.primary }}
-          >
-            &copy; {new Date().getFullYear()} Chris Liu
-          </footer>
         </div>
       </aside>
     </>
