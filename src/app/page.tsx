@@ -2,7 +2,6 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
 import { Shadows_Into_Light, Caveat, Potta_One } from "next/font/google";
@@ -11,12 +10,12 @@ import getMonth from "@/utils/getMonth";
 import Switch from "@/app/components/Switch";
 import Sidebar from "./components/Sidebar";
 import Project from "./projects/Project";
+import AboutMe from "./AboutMe/AboutMe";
 
 import { ReactLenis, useLenis } from "lenis/react";
 
 import useScrollSnap from "react-use-scroll-snap";
 
-const Globe = dynamic(() => import("@/app/components/Globe"), { ssr: false });
 
 const shadowsIntoLight = Shadows_Into_Light({
   subsets: ["latin"],
@@ -111,6 +110,7 @@ export default function Home() {
     // called every scroll
     console.log(lenis);
   });
+  console.log("lenis", lenis);
   return (
     <div className="w-full " ref={scrollRef}>
       <ReactLenis root />
@@ -247,6 +247,7 @@ export default function Home() {
           <Project />
         </a>
       </main>
+      <AboutMe />
     </div>
   );
 }

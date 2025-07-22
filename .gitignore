@@ -42,4 +42,5 @@ next-env.d.ts
 
 # builds
 dist
-
+build
+lib
