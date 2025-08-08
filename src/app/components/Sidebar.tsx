@@ -10,7 +10,7 @@ import {
   FaEnvelope,
   FaGraduationCap,
 } from "react-icons/fa";
-import { Satisfy, Handlee, Montserrat_Alternates, Nothing_You_Could_Do, Grandstander } from "next/font/google";
+import { Satisfy, Handlee} from "next/font/google";
 
 const satisfy = Satisfy({
   subsets: ["latin"],
