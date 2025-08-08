@@ -9,7 +9,7 @@ import { Shadows_Into_Light, Caveat, Potta_One, } from "next/font/google";
 import getMonth from "@/utils/getMonth";
 import Switch from "@/app/components/Switch";
 import Sidebar from "./components/Sidebar";
-import Project from "./projects/Project";
+import Project from "./projects/Project"
 import AboutMe from "./AboutMe/AboutMe";
 
 import { ReactLenis, useLenis } from "lenis/react";
