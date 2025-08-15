@@ -60,7 +60,7 @@ const sidebarItems: SidebarItem[] = [
   { label: "Home", icon: <FaHome />, href: "/", font: "var(--font-satisfy)" },
   { label: "Projects", icon: <FaProjectDiagram />, href: "/projects", font: "" },
   { label: "About Me", icon: <FaUser />, href: "/about", font: "" },
-  {  label: "Contact", icon: <FaEnvelope />, href: "/contact", font: "" },
+  { label: "Contact", icon: <FaEnvelope />, href: "/contact", font: "" },
   { label: "Education", icon: <FaGraduationCap />, href: "/education", font: "" },
 ];
 
