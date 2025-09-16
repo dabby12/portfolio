@@ -202,9 +202,14 @@ export default function Home() {
 
         <motion.h1
           className={`${shadowsIntoLight.className} text-5xl font-extrabold mb-4 z-10`}
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: -60, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 120,
+            damping: 12,
+          }}
           style={{ color: colors.primary }}
         >
           Chris Liu
