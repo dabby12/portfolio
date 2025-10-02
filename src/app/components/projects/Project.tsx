@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import dynamic from "next/dynamic";
 
 type Repo = {
   name: string;
@@ -10,18 +10,30 @@ type Repo = {
   description: string | null;
 };
 
+
 export default function Project() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchRepos() {
       try {
-        const res = await fetch("/server/api/getRepo"); // calls your API route
+        const res = await fetch("/server/api/getRepo");
+        
+        // Check if response is JSON
+        const contentType = res.headers.get("content-type");
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        if (!contentType || !contentType.includes("application/json")) {
+          const text = await res.text();
+          throw new Error(`Expected JSON, got: ${text.slice(0, 100)}...`);
+        }
+
         const data = await res.json();
-        setRepos(data);
-      } catch (err) {
+        setRepos(data); // adjust if your API returns { repos: [...] }
+      } catch (err: any) {
         console.error(err);
+        setError(err.message || "Failed to fetch repos");
       } finally {
         setLoading(false);
       }
@@ -30,51 +42,17 @@ export default function Project() {
     fetchRepos();
   }, []);
 
-  console.log("Repos:", repos);
-
   if (loading) return <p>Loading projects...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!repos.length) return <p>No projects found.</p>;
 
   return (
-    <ProjectWrapper>
-      {repos.map((repo, index) => (
-        <ProjectSection
-          key={repo.name}
-          style={{ background: index % 2 === 0 ? "#FFADAD" : "#FFD6A5" }}
-        >
-          <h1>{repo.name}</h1>
-          <p>{repo.description ?? "No description provided."}</p>
-          <a href={repo.url} target="_blank" rel="noopener noreferrer">
-            View Repo
-          </a>
-        </ProjectSection>
-      ))}
-    </ProjectWrapper>
-  );
+  <div className="p-6 space-y-6">
+
+    {/* Terminal Section */}
+    <div className="rounded-lg overflow-hidden shadow-lg">
+    </div>
+  </div>
+);
+
 }
-
-// Styled Components
-const ProjectWrapper = styled.div`
-  width: 100%;
-`;
-
-const ProjectSection = styled.section`
-  height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 2rem;
-  padding: 2rem;
-  box-sizing: border-box;
-
-  a {
-    margin-top: 1rem;
-    color: blue;
-    text-decoration: underline;
-    font-size: 1.2rem;
-  }
-`;

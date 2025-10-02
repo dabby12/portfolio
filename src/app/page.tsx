@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
-import { Shadows_Into_Light, Caveat, Potta_One } from "next/font/google";
+import { Shadows_Into_Light, Caveat, Potta_One, Baskervville } from "next/font/google";
 import ContactPage from "./contact/page";
 // animejs
 import { animate, createTimeline, stagger, text, Timeline } from "animejs";
@@ -15,8 +15,6 @@ import Sidebar from "@/app/components/Sidebar";
 import Project from "@/app/components/projects/Project";
 import AboutMe from "@/app/AboutMe/AboutMe";
 
-import { ReactLenis, useLenis } from "lenis/react";
-
 // Google Fonts
 const shadowsIntoLight = Shadows_Into_Light({
   subsets: ["latin"],
@@ -24,6 +22,8 @@ const shadowsIntoLight = Shadows_Into_Light({
 });
 const caveat = Caveat({ subsets: ["latin"], weight: "400" });
 const pottaOne = Potta_One({ subsets: ["latin"], weight: "400" });
+const baskervville = Baskervville({ subsets: ["latin"], weight: "400" });
+
 // Color Themes
 const seasonalColors = {
   Spring: { primary: "#2F2F2F", secondary: "#FADADD", accent: "#FF6F91" },
@@ -51,6 +51,8 @@ export default function Home() {
   const [isOn, setIsOn] = useState(false);
   const [colors, setColors] = useState(seasonalColors["Spring"]);
   const [bgGradient, setBgGradient] = useState(seasonalGradients["Spring"]);
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 200], [1, 0]); // fade out after 200px
 
   useEffect(() => {
     const month = getMonth();
@@ -72,7 +74,6 @@ export default function Home() {
   }, [season, isOn]);
 
   const toggleColors = () => setIsOn((prev) => !prev);
-  useLenis();
   useEffect(() => {
     const { chars } = text.split("h1", { words: false, chars: true });
     animate(chars, {
@@ -161,10 +162,10 @@ export default function Home() {
         background: bgGradient.startsWith("linear")
           ? bgGradient
           : `linear-gradient(${bgGradient}, ${bgGradient})`,
-        color: colors.primary,
+        color: "var(--foreground)",
+        fontFamily: 'var(--font-mono)'
       }}
     >
-      <ReactLenis root />
       <Sidebar colors={colors} isOn={isOn} />
 
       {/* Hero Section */}
@@ -281,10 +282,13 @@ export default function Home() {
           ↓ Scroll down
         </motion.div>
 
-        <footer className="absolute bottom-4 text-xs opacity-50 z-10">
+        <motion.footer
+          style={{ opacity }}
+          className={`${baskervville.className} absolute bottom-2 text-xs text-center w-full px-4 z-10`}
+        >
           &copy; {new Date().getFullYear()} Chris Liu · Built with Next.js +
           Framer Motion
-        </footer>
+        </motion.footer>
       </section>
 
       {/* Projects */}
@@ -293,9 +297,7 @@ export default function Home() {
       </section>
 
       {/* About Me */}
-      <section className="w-full">
-        <AboutMe />
-      </section>
+      <section className="w-full"></section>
     </main>
   );
 }
