@@ -1,10 +1,17 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
-import { Shadows_Into_Light, Caveat, Potta_One, Baskervville } from "next/font/google";
+import {
+  Shadows_Into_Light,
+  Caveat,
+  Potta_One,
+  Baskervville,
+  Space_Mono,
+} from "next/font/google";
 import ContactPage from "./contact/page";
 // animejs
 import { animate, createTimeline, stagger, text, Timeline } from "animejs";
@@ -23,7 +30,10 @@ const shadowsIntoLight = Shadows_Into_Light({
 const caveat = Caveat({ subsets: ["latin"], weight: "400" });
 const pottaOne = Potta_One({ subsets: ["latin"], weight: "400" });
 const baskervville = Baskervville({ subsets: ["latin"], weight: "400" });
-
+const spaceMonoFont = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 // Color Themes
 const seasonalColors = {
   Spring: { primary: "#2F2F2F", secondary: "#FADADD", accent: "#FF6F91" },
@@ -163,7 +173,7 @@ export default function Home() {
           ? bgGradient
           : `linear-gradient(${bgGradient}, ${bgGradient})`,
         color: "var(--foreground)",
-        fontFamily: 'var(--font-mono)'
+        fontFamily: "var(--font-mono)",
       }}
     >
       <Sidebar colors={colors} isOn={isOn} />
@@ -273,14 +283,12 @@ export default function Home() {
           </a>
         </motion.div>
 
-        <motion.div
-          className="absolute bottom-10 text-sm opacity-60 animate-bounce"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-        >
-          ↓ Scroll down
-        </motion.div>
+         <motion.div
+      className="absolute bottom-10 text-sm text-center opacity-60"
+      style={{ opacity }}
+    >
+      ↓ Scroll down
+    </motion.div>
 
         <motion.footer
           style={{ opacity }}
@@ -292,8 +300,21 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="w-full">
-        <Project />
+      <section
+        id="projects"
+        className={`${spaceMonoFont.className} w-full flex flex-col items-center`}
+        style={{
+          background: bgGradient.startsWith("linear")
+            ? bgGradient
+            : `linear-gradient(${bgGradient}, ${bgGradient})`,
+          color: colors.secondary, // subtle contrast
+          paddingTop: "4rem",
+          paddingBottom: "4rem",
+        }}
+      >
+        <div className="w-full max-w-5xl">
+          <Project />
+        </div>
       </section>
 
       {/* About Me */}

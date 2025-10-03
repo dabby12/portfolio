@@ -28,7 +28,7 @@ export async function sendContactEmail({ name, email, message }: ContactFormData
     // Plain text fallback
     text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
     // HTML formatted email
-    html: `
+    html: `hones
       <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
         <h2 style="color: #2F2F2F;">📩 New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
